@@ -1,21 +1,22 @@
 {
-    
-    "employees" : [
-        {
-            "name" : "Ali Altinok",
-            "department" : "Computer Engineering",
-            "Salary" : 6500,
-            "id" : 1
-
-        }, 
-
-        {
-            "name" : "Mehmet Altinok",
-            "department" : "Computer Engineering",
-            "Salary" : 5500,
-            "id" : 2
-
-        }
-]
-
+  "employees": [
+    {
+      "name": "Ali Altinok",
+      "department": "Computer Engineering",
+      "Salary": 6500,
+      "id": 1
+    },
+    {
+      "name": "Aslı Altindag",
+      "department": "Civil Engineering",
+      "salary": 6200,
+      "id": 2
+    },
+    {
+      "name": "Caner Altindag",
+      "department": "Civil Engineering",
+      "salary": 6200,
+      "id": 5
+    }
+  ]
 }
