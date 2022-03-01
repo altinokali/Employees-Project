@@ -3,20 +3,20 @@
     {
       "name": "Ali Altinok",
       "department": "Computer Engineering",
-      "Salary": 6500,
+      "salary": 6400,
       "id": 1
     },
     {
-      "name": "Aslı Altindag",
-      "department": "Civil Engineering",
-      "salary": 6200,
-      "id": 2
+      "name": "Arif Gunduz",
+      "department": "Computer Engineering",
+      "salary": 4500,
+      "id": 8
     },
     {
-      "name": "Caner Altindag",
+      "name": "Caner Altun",
       "department": "Civil Engineering",
-      "salary": 6200,
-      "id": 5
+      "salary": 5600,
+      "id": 9
     }
   ]
 }
