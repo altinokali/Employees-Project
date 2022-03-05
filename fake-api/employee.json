@@ -11,12 +11,6 @@
       "department": "Computer Engineering",
       "salary": 4500,
       "id": 8
-    },
-    {
-      "name": "Caner Altun",
-      "department": "Civil Engineering",
-      "salary": 5600,
-      "id": 9
     }
   ]
 }

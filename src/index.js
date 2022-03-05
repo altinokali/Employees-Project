@@ -18,6 +18,7 @@ eventListeners();
 function eventListeners() {
     document.addEventListener("DOMContentLoaded", getAllEmployees);
     form.addEventListener("submit" , addEmployee);
+    employeesList.addEventListener("click", UpdateOrDelete)
 }
 
 function getAllEmployees() {
@@ -51,7 +52,7 @@ function addEmployee(e) {
   
     const employeeName =nameInput.value.trim();
     const employeeDepartment = departmentInput.value.trim();
-    const employeeSalary = salaryInput.value.trim();
+    const employeeSalary = parseInt(salaryInput.value.trim());
     
     if(employeeName === "" || employeeDepartment === "" || employeeSalary === ""){
         alert('Lütfen ilgili alanlari doldurunuz');
@@ -67,3 +68,22 @@ function addEmployee(e) {
     ui.clearInputs()
     e.preventDefault();
 }
+
+function UpdateOrDelete(e) {
+    if(e.target.id === "delete-employee") {
+        //Silme islemi
+        deleteEmployee(e.target);
+
+    }else if(e.target.id === "update-employee"){
+        //Güncelle
+    }
+}
+
+function deleteEmployee(targetEmployee) {
+ const id = targetEmployee.parentElement.previousElementSibling.previousElementSibling.textContent;
+ request.delete(id)
+ .then(message => {{
+    ui.deleteEmployeeFromUUI(targetEmployee.parentElement.parentElement);
+ }}).catch(err => console.log(err));
+}
+

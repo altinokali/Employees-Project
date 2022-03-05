@@ -43,5 +43,9 @@ export class UI{
             <td> <a href="#" id = "delete-employee" class= "btn btn-danger">Sil</a></td>
         </tr>`;
     }
+
+    deleteEmployeeFromUUI(element) {
+        element.remove();
+    }   
  
 }
