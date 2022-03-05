@@ -8,7 +8,7 @@ const departmentInput = document.querySelector("#department")
 const salaryInput = document.querySelector("#salary")
 const employeesList = document.querySelector("#employees")
 const updateEmoployeeButton = document.querySelector("#update")
-
+let updateState = null;
 const request = new Request("http://localhost:3000/employees")
 
 const ui = new UI()
@@ -18,7 +18,8 @@ eventListeners();
 function eventListeners() {
     document.addEventListener("DOMContentLoaded", getAllEmployees);
     form.addEventListener("submit" , addEmployee);
-    employeesList.addEventListener("click", UpdateOrDelete)
+    employeesList.addEventListener("click", UpdateOrDelete);
+    updateEmoployeeButton.addEventListener("click", updateEmployee);
 }
 
 function getAllEmployees() {
@@ -76,6 +77,7 @@ function UpdateOrDelete(e) {
 
     }else if(e.target.id === "update-employee"){
         //Güncelle
+        updateEmployeeController(e.target.parentElement.parentElement);
     }
 }
 
@@ -87,3 +89,28 @@ function deleteEmployee(targetEmployee) {
  }}).catch(err => console.log(err));
 }
 
+function updateEmployeeController(targetEmployee) {
+    ui.toggleUpdateButton(targetEmployee)
+
+    if(updateState === null) {
+        updateState = {
+            updateId : targetEmployee.children[3].textContent,
+            updateParent : targetEmployee
+        }
+
+    }else {
+        updateState = null;
+    }
+}
+
+function updateEmployee() {
+    if(updateState) {
+        //Güncellem
+        const data = {name: nameInput.value.trim(), department:departmentInput.value.trim(),salary: Number(salaryInput.value.trim())}
+        request.put(updateState.updateId,data)
+        .then(updatedEmployee => {
+            ui.updateEmployeeOnUI(updatedEmployee,updateState.updateParent); 
+        })
+        .catch(err => console.log(err))
+    }
+}

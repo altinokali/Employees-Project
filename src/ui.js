@@ -46,6 +46,32 @@ export class UI{
 
     deleteEmployeeFromUUI(element) {
         element.remove();
-    }   
- 
+    } 
+    
+    toggleUpdateButton(target) {
+        if(this.updateButton.style.display === "none") {
+            this.updateButton.style.display = "block";
+            this.addAllEmployeesInfoToInputs(target);
+        }else {
+            this.updateButton.style.display = "none";
+        }
+    }
+    addAllEmployeesInfoToInputs(target) {
+        const children =target.children;
+        
+        this.nameInput.value = children[0].textContent;
+        this.departmentInput.value = children[1].textContent;
+        this.salaryInput.value = children[2].textContent;
+    }
+
+    updateEmployeeOnUI(employee,parent) {
+        parent.innerHTML = `<tr>
+        <td>${employee.name}</td>
+        <td>${employee.department}</td>
+        <td>${employee.salary}</td>
+        <td>${employee.id}</td>
+        <td><a href="#" id = "update-employee" class= "btn btn-danger">Güncelle</a></td> 
+        <td> <a href="#" id = "delete-employee" class= "btn btn-danger">Sil</a></td>
+    </tr>`;
+    }
 }
